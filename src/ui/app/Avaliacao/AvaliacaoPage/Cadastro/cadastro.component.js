@@ -36,7 +36,7 @@ class Cadastro extends React.Component {
         window.updateTrancking();
     }
 
-    componentWillMount() { 
+    componentWillMount() {
 
         AvaliacaoApi.get(this.props.params.id).then((data) => {
 
@@ -60,10 +60,10 @@ class Cadastro extends React.Component {
     voltar() {
         this.props.router.push('/avaliacao');
     }
- 
+
 
     verSlide(imagemPreview) {
- 
+
         this.setState({ imagemPreview });
     }
 
@@ -177,10 +177,10 @@ class Cadastro extends React.Component {
                                             <Card.Content style={{ paddingBottom: '35px' }}>
 
                                                 <Slider {...settings}>
-                                                    <div className="link" onClick={() => this.verSlide({ url: Imagens.img1 })}><Image src={Imagens.img1} style={{ height: '500px', width: '100%' }} /></div>
-                                                    <div className="link" onClick={() => this.verSlide({ url: Imagens.img2 })}><Image src={Imagens.img2} style={{ height: '500px', width: '100%' }} /></div>
+                                                    <div className="link" onClick={() => this.verSlide({ url: Imagens.img5 })}><Image src={Imagens.img5} style={{ height: '500px', width: '100%' }} /></div>
+                                                    {/* <div className="link" onClick={() => this.verSlide({ url: Imagens.img2 })}><Image src={Imagens.img2} style={{ height: '500px', width: '100%' }} /></div>
                                                     <div className="link" onClick={() => this.verSlide({ url: Imagens.img3 })}><Image src={Imagens.img3} style={{ height: '500px', width: '100%' }} /></div>
-                                                    <div className="link" onClick={() => this.verSlide({ url: Imagens.img4 })}><Image src={Imagens.img4} style={{ height: '500px', width: '100%' }} /></div>
+                                                    <div className="link" onClick={() => this.verSlide({ url: Imagens.img4 })}><Image src={Imagens.img4} style={{ height: '500px', width: '100%' }} /></div> */}
                                                 </Slider>
 
                                             </Card.Content>
