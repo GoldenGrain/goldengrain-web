@@ -1,0 +1,33 @@
+.loading-overlay {
+    background: rgba(0, 0, 0, 0);
+    /* position: relative; */
+    display: block;
+    z-index: 9999999;
+    position: fixed;
+    text-align: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 2px;
+    user-select: none;
+    .loading-icon {
+        position: absolute;
+        margin-top: calc(25% - 50px);
+        width: 80px !important;
+        margin-left: -40px;
+        .pt-spinner-head {
+            stroke: #0f9960;
+            stroke-width: 4;
+        }
+    }
+}
+
+.content-page .loading-overlay {
+    position: absolute;
+}
+
+.loading-overlay.with-dialog {
+    position: fixed !important;
+    margin-top: 100px;
+}

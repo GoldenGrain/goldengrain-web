@@ -1,0 +1,27 @@
+ 
+label { 
+
+    .pt-input-group {
+        margin: 4px 0;
+    }
+}
+
+.text-right {
+    text-align: right;
+}
+
+.text-light {
+    font-weight: 300;
+}
+.pt-select  {
+    margin-bottom: 4px;
+}
+
+.pt-intent-danger select {
+    border-color: red;
+} 
+
+
+.pt-intent-danger.pt-datepicker {
+       border: 1px solid red;
+} 

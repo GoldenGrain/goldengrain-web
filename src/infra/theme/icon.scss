@@ -1,0 +1,18 @@
+.pt-input-group .fa  {
+    line-height: 1; 
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    margin: 0 7px;
+    line-height: 30px;
+}
+ .pt-input-group > .fa {
+    position: absolute;
+    top: 0;
+}
+
+ .pt-input-group > .fa:first-child {
+    left: 0;
+}

@@ -1,0 +1,11 @@
+@media print {
+    .app-aside,
+    .breadcrumbs,
+    .ui.button {
+        display: none !important;
+    }
+
+    #main {
+        width: 100% !important;
+    }
+}

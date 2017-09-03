@@ -1,0 +1,35 @@
+.card-custom {    
+
+    .content-center {
+        
+        height: 75px;
+
+        .meta {
+            margin-bottom: 4px;
+        }
+    }
+
+}
+.icon-card {
+    position: absolute;
+    top: -20px; 
+    padding: 20px;
+    color: white;
+    border-radius: 5px;
+}
+
+.icon-green {
+    background: #43a047;
+}
+
+.icon-pink {
+    background: #d81b60;
+}
+
+.icon-blue {
+    background: #00acc1;
+}
+
+.icon-orange {
+    background: #fb8c00;
+}

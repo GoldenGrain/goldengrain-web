@@ -1,0 +1,75 @@
+body {    
+    background: #F1F1F1;
+}
+
+html,
+body,
+#root {
+    font-size: 13px;
+    font-family: 'Open Sans';
+    #main { 
+        // overflow-x: hidden;  
+        // padding: 0 15px; 
+        // width: calc(100% - 265px);
+        // float: right;
+    }
+}
+
+.slick-dots li button:before {
+    background: black;
+    border-radius: 50%;
+}
+
+table {
+    width: 100%;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.link {
+    cursor: pointer;
+}
+
+.link-hover-item:hover {
+    background: #efefef;
+}
+
+.ui.grid>.row,
+.ui.table thead th,
+.default-theme label,
+.ui.selection.dropdown {
+    font-weight: 500;
+}
+
+.sidebar-inner {
+    float: left;
+}
+
+.grid {
+    .row {
+        margin: 0;
+    }
+}
+
+@import "animation.scss";
+@import "loading.scss";
+
+.default-theme { 
+    @import "layout.scss";
+    // @import "datetime.scss";
+    // @import "slider.scss";
+    // @import "text.scss";
+    @import "sidebar.scss";
+    // @import "navbar.scss";
+    // @import "page.scss";
+    // @import "scrollbar.scss";
+    // @import "button.scss";
+    // @import "icon.scss";
+    // @import "print.scss";
+}

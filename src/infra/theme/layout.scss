@@ -1,0 +1,30 @@
+ 
+.self-contained {
+    display: inline-block;    
+}
+
+table > thead > tr > th {
+    font-size: 13px !important;
+    padding: 7px 10px !important;
+    font-weight: bold !important;
+}
+
+.main-panel {
+    overflow: visible !important;
+}
+
+
+.selecionado {
+    background:  #2185D0 !important;
+    color: #fff !important;
+
+    span {
+        color: #fff !important;
+    }
+}
+
+.ui.table td {
+    padding: 7px 10px;
+    font-size: 13px !important;
+    font-weight: normal;
+}
