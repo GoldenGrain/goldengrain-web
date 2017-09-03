@@ -70,13 +70,13 @@ class Sidebar extends Component {
                                     </p>    
                                 </a>
                             </li>
-                            <li className={activeItem == '/pagamento' ? 'active' : ''} onClick={() => this.handleNodeClick('/pagamento')}>
+                            {/* <li className={activeItem == '/pagamento' ? 'active' : ''} onClick={() => this.handleNodeClick('/pagamento')}>
                                 <a>
                                     <p>
                                         <i className="mdi mdi-alarm-check"></i> Pagamento
                                     </p>    
                                 </a>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </div>

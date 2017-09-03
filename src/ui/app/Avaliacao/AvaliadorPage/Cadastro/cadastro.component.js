@@ -1,8 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Table, Loader, Button, Message, Dimmer, Icon, Header, Grid, Image, Item, List, Checkbox, Form, Input, Select, Card, Segment } from 'semantic-ui-react';
-import '../atendimento.scss';
-import SelectPaciente from 'ui/shared/Selects/SelectPaciente';
+import '../atendimento.scss'; 
 import BreadcrumbCustom from 'ui/shared/BreadcrumbCustom';
 import AvaliacaoApi from 'service/api/avaliacao.api';
 import Slider from 'react-slick';

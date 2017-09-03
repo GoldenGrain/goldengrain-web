@@ -21,6 +21,8 @@ class Login extends React.Component {
 
         e.preventDefault();
 
+        localStorage.setItem('tipo', this.state.tipo);
+
         this.props.router.push('/');
     }
 
@@ -57,9 +59,8 @@ class Login extends React.Component {
 
                         <form onSubmit={e => this.handleSubmit(e)} className={tipo != 0 ? "show" : "hide"}>
 
-                            {/*<ErrorDialog state="login" title="Não foi possivel entrar" />*/}
                             <div className={usernameGroupClassName}>
-                                <input className={classUsername} onChange={ev => setCPF(ev.target.value)} type="text" placeholder="USUARIO" dir="auto" />
+                                <input className={classUsername} onChange={ev => setCPF(ev.target.value)} type="text" placeholder="CNPJ" dir="auto" name="cnpj" />
                             </div>
                             <br />
                             <input className={classPassword} onChange={ev => setPassword(ev.target.value)} type="password" placeholder="SENHA" dir="auto" />

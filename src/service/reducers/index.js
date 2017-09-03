@@ -1,16 +1,10 @@
 import { combineReducers } from 'redux';
-import login from "./login.reducer";
-import laudo from "./laudo.reducer";
-import avaliacao from "./avaliacao.reducer";
-import paciente from "./paciente.reducer";
-import servico from "./servico.reducer";
+import login from "./login.reducer"; 
+import avaliacao from "./avaliacao.reducer"; 
 
 const appState = combineReducers({
     login,
-    avaliacao,
-    paciente,
-    servico,
-    laudo
+    avaliacao
 });
 
 export default (state, action) => {

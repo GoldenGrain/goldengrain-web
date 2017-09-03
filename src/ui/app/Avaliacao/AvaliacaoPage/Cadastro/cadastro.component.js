@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from 'react-router';
 import { Table, Loader, Button, Message, Dimmer, Icon, Header, Grid, Image, Item, List, Checkbox, Form, Input, Select, Card, Segment } from 'semantic-ui-react';
 import '../atendimento.scss';
-import SelectPaciente from 'ui/shared/Selects/SelectPaciente';
 import BreadcrumbCustom from 'ui/shared/BreadcrumbCustom';
 import AvaliacaoApi from 'service/api/avaliacao.api';
 import Slider from 'react-slick';
@@ -33,7 +32,11 @@ class Cadastro extends React.Component {
         this.setState({ avaliacao });
     }
 
-    componentWillMount() {
+    componentDidMount() {
+        window.updateTrancking();
+    }
+
+    componentWillMount() { 
 
         AvaliacaoApi.get(this.props.params.id).then((data) => {
 
@@ -47,21 +50,20 @@ class Cadastro extends React.Component {
 
     salvar(e) {
 
-        const model = this.state.avaliacao;
+        if (!this.state.avaliacao.relatorio) return alert("Preencha o campo do relatório antes de enviar.");
 
-        this.setState({ loading: true });
+        if (!confirm("Deseja realmente enviar seu relatório ?")) return;
 
-        AvaliacaoApi.save(model).then(() => {
-            this.setState({ loading: false });
-            this.props.router.push('/avaliacao');
-        });
+        this.props.router.push('/');
     }
 
     voltar() {
         this.props.router.push('/avaliacao');
     }
+ 
 
     verSlide(imagemPreview) {
+ 
         this.setState({ imagemPreview });
     }
 
@@ -79,6 +81,8 @@ class Cadastro extends React.Component {
         } = this.state;
 
         const {
+            data,
+            relatorio,
             codigo,
             amostra,
             produtor,
@@ -123,7 +127,9 @@ class Cadastro extends React.Component {
 
                 <Dimmer inverted active={imagemPreview.url} onClickOutside={() => this.fecharImagem()}>
                     <Segment style={{ width: '100%', maxWidth: '900px', margin: 'auto' }}>
-                        <Image src={imagemPreview.url} style={{ height: '600px', width: '100%' }} />
+                        <div className="demo-container">
+                            <img src={imagemPreview.url} ref="img2" id="img" style={{ height: '600px', width: '100%' }} />
+                        </div>
                     </Segment>
                 </Dimmer>
 
@@ -141,13 +147,14 @@ class Cadastro extends React.Component {
                                 </div>
                             </Grid.Column>
                         </Grid.Row>
+
                     </Grid>
 
                     <Card fluid>
 
                         <Card.Content>
 
-                            <Card.Header>  Laudo de Classificação de Soja - {codigo} </Card.Header>
+                            <Card.Header>  Laudo de Classificação de Soja - {data} </Card.Header>
 
                         </Card.Content>
 
@@ -189,7 +196,7 @@ class Cadastro extends React.Component {
                                             <Table.Body>
 
                                                 <Table.Row>
-                                                    <Table.Cell width="7"> Código: </Table.Cell>
+                                                    <Table.Cell width="7"> Contrato: </Table.Cell>
                                                     <Table.Cell>
                                                         <strong> {codigo} </strong>
                                                     </Table.Cell>
@@ -214,7 +221,7 @@ class Cadastro extends React.Component {
                                                     </Table.Cell>
                                                 </Table.Row>
                                                 <Table.Row>
-                                                    <Table.Cell width="7"> Responsavel pela Coleta (Classificador): </Table.Cell>
+                                                    <Table.Cell width="7"> Classificador: </Table.Cell>
                                                     <Table.Cell>
                                                         <strong> {classificador} </strong>
                                                     </Table.Cell>
@@ -349,6 +356,16 @@ class Cadastro extends React.Component {
                                     </Grid.Column>
                                 </Grid.Row>
 
+
+                            </Grid>
+
+                            <Grid>
+                                <Grid.Row>
+                                    <Grid.Column>
+                                        <label> <b>Relatório: </b> </label>
+                                        <textarea name="relatorio" placeholder="Relatório" value={relatorio} onChange={(e) => handleChange(e, e.target)} />
+                                    </Grid.Column>
+                                </Grid.Row>
                             </Grid>
 
                         </Card.Content>

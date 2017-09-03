@@ -34,6 +34,56 @@
   <link href="//cdn.materialdesignicons.com/1.7.22/css/materialdesignicons.min.css" rel="stylesheet">
   <link href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css" rel="stylesheet">
 
+
+  <script src="./tracking-min.js"></script>
+
+  <script>
+    window.updateTrancking = function () {
+
+      var imgs = document.querySelectorAll('.link-img');
+
+      imgs.forEach(function (item) { 
+
+        var img = item.firstElementChild;
+
+        if (!img) return;
+
+        var tracking = window.tracking;
+
+        tracking.ColorTracker.registerColor('white', function (r, g, b) {
+
+          if (r > 160 && g < 205 && b < 90) {
+            return true;
+          }
+          return false;
+        });
+
+        var tracker = new tracking.ColorTracker(['white']);
+
+        tracker.on('track', function (event) {
+          event.data.forEach(function (rect) {
+            window.plot(rect.x, rect.y, rect.width, rect.height, rect.color);
+          });
+        });
+
+        tracking.track(img, tracker);
+
+        window.plot = function (x, y, w, h, color) {
+          var rect = document.createElement('div');
+          document.querySelector('.demo-container').appendChild(rect);
+          rect.classList.add('rect');
+          rect.style.border = '2px solid ' + color;
+          rect.style.borderRadius = w + "px";
+          rect.style.width = w + 'px';
+          rect.style.height = h + 'px';
+          rect.style.left = (img.offsetLeft + x) + 'px';
+          rect.style.top = (img.offsetTop + y) + 'px';
+        };
+
+      });
+    }
+  </script>
+
   <!--
       Notice the use of %PUBLIC_URL% in the tag above.
       It will be replaced with the URL of the `public` folder during the build.

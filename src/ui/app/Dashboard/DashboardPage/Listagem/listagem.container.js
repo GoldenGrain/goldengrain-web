@@ -1,13 +1,13 @@
 import component from './listagem.component';
 import { connect } from 'react-redux';
-import { getAll } from "service/actions/servico.action";
+import { getAll } from "service/actions/avaliacao.action";
 
 const mapStateToProps = (state, props) => {
 
     return {
-        data: state.servico.data,
-        loading: state.servico.loading,
-        paramsSearch: state.servico.paramsSearch
+        data: state.avaliacao.data,
+        loading: state.avaliacao.loading,
+        paramsSearch: state.avaliacao.paramsSearch
     }
 };
 

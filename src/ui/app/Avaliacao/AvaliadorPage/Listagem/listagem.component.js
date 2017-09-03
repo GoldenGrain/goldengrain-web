@@ -113,61 +113,34 @@ class Listagem extends React.Component {
                 </Grid>
 
                 <Segment>
-                    <Table celled striped stackable structured>
+                    <List>
+                        <ListItem
+                            primaryText="João da Cruz"
+                            secondaryText="Poconé - MT"
+                            leftAvatar={<Avatar src="http://goiotronix.com/images/user-mobile.png" />}
+                        />
+                        <ListItem
+                            primaryText="João Augusto"
+                            secondaryText="Várzea Grande - MT"
+                            leftAvatar={<Avatar src="http://goiotronix.com/images/user-mobile.png" />}
+                        />
+                        <ListItem
+                            primaryText="Leonardo Pinheiro"
+                            secondaryText="Barra dos Bugres - MT"
+                            leftAvatar={<Avatar src="http://goiotronix.com/images/user-mobile.png" />}
+                        />
+                        <ListItem
+                            primaryText="Matheus Silva"
+                            secondaryText="Cuiabá - MT"
+                            leftAvatar={<Avatar src="http://goiotronix.com/images/user-mobile.png" />}
+                        />
+                        <ListItem
+                            primaryText="Anderson Magalhães"
+                            secondaryText="Sinop - MT"
+                            leftAvatar={<Avatar src="http://goiotronix.com/images/user-mobile.png" />}
+                        />
 
-                        <Table.Header>
-                            <Table.Row>
-                                {/* <Table.HeaderCell style={{ width: '35px' }} textAlign='center'> <Checkbox checked={selecionados == items.length} onChange={() => selectedAll()} /> </Table.HeaderCell> */}
-                                <Table.HeaderCell style={{ width: '70px' }} >Código</Table.HeaderCell>
-                                <Table.HeaderCell style={{ width: '150px' }} >Data</Table.HeaderCell>
-                                <Table.HeaderCell>Produtor</Table.HeaderCell>
-                                <Table.HeaderCell>Comprador</Table.HeaderCell>
-                                <Table.HeaderCell>Classificador</Table.HeaderCell>
-                                <Table.HeaderCell style={{ width: '35px' }} >Status</Table.HeaderCell>
-                                <Table.HeaderCell style={{ width: '185px' }} >Ações</Table.HeaderCell>
-                            </Table.Row>
-                        </Table.Header>
-
-                        <Table.Body>
-
-                            {
-                                items.map((item, key) => (
-
-                                    <Table.Row key={key} className={'link ' + (item.selected ? 'selecionado' : '')}>
-                                        {/* <Table.Cell textAlign='center'>
-                                            <Checkbox checked={item.selected} onChange={() => selected(item)} />
-                                        </Table.Cell> */}
-                                        <Table.Cell onDoubleClick={() => editar(item)}>
-                                            {item.codigo}
-                                        </Table.Cell>
-                                        <Table.Cell onDoubleClick={() => editar(item)}>
-                                            {item.data}
-                                        </Table.Cell>
-                                        <Table.Cell onDoubleClick={() => editar(item)}>
-                                            {item.produtor}
-                                        </Table.Cell>
-                                        <Table.Cell onDoubleClick={() => editar(item)}>
-                                            {item.comprador}
-                                        </Table.Cell>
-                                        <Table.Cell onDoubleClick={() => editar(item)}>
-                                            {item.classificador}
-                                        </Table.Cell>
-                                        <Table.Cell textAlign="center" onDoubleClick={() => editar(item)}>
-                                            <i title={item.status} className={'fa ' + (item.status_id == 2 ? 'fa-check-circle text-success' : (item.status_id == 1 ? 'fa-clock-o text-warning' : 'fa-ban text-danger'))} />
-                                        </Table.Cell>
-                                        <Table.Cell textAlign="center" onDoubleClick={() => editar(item)} >
-                                            {item.status_id != 2 ? <Button color="blue" size="small" onClick={() => editar(item)} > <span> Avaliar </span>  </Button> : null}
-                                            {item.status_id != 2 ? <Button color="red" size="small" onClick={() => rejeitar(item)}> <span> Rejeitar </span>  </Button> : null}
-                                            {item.status_id != 1 ? <Button color="blue" size="small" onClick={() => verAvaliadores(item)} title="Ver Avaliadores"> <span className="fa fa-users"> </span>  </Button> : null}
-                                            {item.status_id != 1 ? <Button color="green" size="small" onClick={() => editar(item)}> <span> Ver Laudo </span>  </Button> : null}
-                                        </Table.Cell>
-                                    </Table.Row>
-                                ))
-                            }
-
-                        </Table.Body>
-
-                    </Table>
+                    </List>
                 </Segment>
 
             </div>

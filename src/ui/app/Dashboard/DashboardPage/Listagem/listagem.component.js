@@ -17,8 +17,13 @@ class Listagem extends React.Component {
         this.state = {
             openModal: false,
             avaliacao: {},
+            tipo: localStorage.getItem('tipo') || 1,
             avaliacoesPendentes: []
         };
+
+        if (!localStorage.getItem('tipo')) {
+            this.props.router.push('/login');
+        }
     }
 
 
@@ -111,7 +116,8 @@ class Listagem extends React.Component {
         const verAvaliacao = this.verAvaliacao.bind(this);
 
         const {
-            avaliacoesPendentes
+            avaliacoesPendentes,
+            tipo
         } = this.state;
 
         const props = {
@@ -126,6 +132,7 @@ class Listagem extends React.Component {
             "width": "100%",
             "options": {
                 "title": "",
+                'legend': 'bottom',
                 "hAxis": { "title": "Anual" },
                 "seriesType": "bars",
                 "series": {
@@ -139,18 +146,15 @@ class Listagem extends React.Component {
             "data": [
                 ["Month", "Avaliações"],
                 ["Junho", 938],
-                ["Julho", 1120],
-                ["Agosto", 1167],
-                ["Setembro", 1110]
+                ["Julho", 780],
+                ["Agosto", 767],
+                ["Setembro", 310]
             ],
             "width": "100%",
             "options": {
                 "title": "",
-                "hAxis": { "title": "Mensal" },
-                "seriesType": "bars",
-                "series": {
-                    "2": { "type": "line" }
-                }
+                'legend': 'bottom',
+                "hAxis": { "title": "Mensal" }
             }
         };
 
@@ -158,69 +162,73 @@ class Listagem extends React.Component {
             <div>
 
                 {this.getModal}
+                
+                {
+                    tipo == 2 ?
+                        <div className="row">
 
-                <div className="row">
-                    <div className="col-md-6">
+                            <div className="col-md-6">
 
-                        <Card fluid>
-                            <Card.Content>
-                                <Card.Header> <i className={'fa fa-clock-o text-warning'} /> Avaliações Pendente </Card.Header>
-                            </Card.Content>
-                            <Card.Content>
-                                <List divided selection verticalAlign='middle'>
-                                    {
-                                        avaliacoesPendentes.map((item, key) => (
-                                            <List.Item key={key}>
-                                                <List.Content floated='right'>
-                                                    <Button primary onClick={() => verAvaliacao(item)}>Ver</Button>
-                                                </List.Content>
-                                                <List.Icon name='tag' size='large' verticalAlign='middle' />
-                                                <List.Content>
-                                                    <p>
-                                                        <strong>#{item.codigo}</strong> - {item.data} (<strong>{item.comprador}</strong>)
-                                                    </p>
-                                                </List.Content>
-                                            </List.Item>
-                                        ))
-                                    }
-                                </List>
-                            </Card.Content>
+                                <Card fluid style={{ height: '370px' }}>
+                                    <Card.Content style={{ height: '40px' }}>
+                                        <Card.Header> <i className={'fa fa-clock-o text-warning'} /> Avaliações Pendente </Card.Header>
+                                    </Card.Content>
+                                    <Card.Content>
+                                        <List divided selection verticalAlign='middle'>
+                                            {
+                                                avaliacoesPendentes.map((item, key) => (
+                                                    <List.Item key={key}>
+                                                        <List.Content floated='right'>
+                                                            <Button primary onClick={() => verAvaliacao(item)}>Ver</Button>
+                                                        </List.Content>
+                                                        <List.Icon name='tag' size='large' verticalAlign='middle' />
+                                                        <List.Content>
+                                                            <p>
+                                                                <strong>#{item.codigo}</strong> - {item.data} (<strong>{item.comprador}</strong>)
+                                                        </p>
+                                                        </List.Content>
+                                                    </List.Item>
+                                                ))
+                                            }
+                                        </List>
+                                    </Card.Content>
 
-                        </Card>
+                                </Card>
 
-                    </div>
+                            </div>
+                            <div className="col-md-6">
 
-                    <div className="col-md-6">
+                                <Card fluid>
 
-                        <Card fluid>
-
-                            <Card.Content>
-                                <Card.Header> <i className={'fa fa-bar-chart'} /> Total de Avaliações Mensais </Card.Header>
-                            </Card.Content>
-                            <Card.Content>
-                                <Chart {...mensal} />
-                            </Card.Content>
-                        </Card>
-                    </div>
-                </div>
+                                    <Card.Content>
+                                        <Card.Header> <i className={'fa fa-bar-chart'} /> Total de Avaliações Através do Sistema </Card.Header>
+                                    </Card.Content>
+                                    <Card.Content>
+                                        <Chart {...mensal} />
+                                    </Card.Content>
+                                </Card>
+                            </div>
+                        </div> : null}
 
                 <br />
 
-                <div className="row">
+                {tipo == 1 ?
 
-                    <div className="col-md-12">
+                    <div className="row">
 
-                        <Card fluid>
+                        <div className="col-md-12">
 
-                            <Card.Content>
-                                <Card.Header> <i className={'fa fa-pie-chart'} /> Índice de Avaliação </Card.Header>
-                            </Card.Content>
-                            <Card.Content>
-                                <Chart {...props} />
-                            </Card.Content>
-                        </Card>
-                    </div>
-                </div>
+                            <Card fluid>
+
+                                <Card.Content>
+                                    <Card.Header> <i className={'fa fa-pie-chart'} /> Índice de Avaliação </Card.Header>
+                                </Card.Content>
+                                <Card.Content>
+                                    <Chart {...props} />
+                                </Card.Content>
+                            </Card>
+                        </div>
+                    </div> : null}
 
             </div>
         )

@@ -61,15 +61,6 @@ table {
 @import "loading.scss";
 
 .default-theme { 
-    @import "layout.scss";
-    // @import "datetime.scss";
-    // @import "slider.scss";
-    // @import "text.scss";
+    @import "layout.scss"; 
     @import "sidebar.scss";
-    // @import "navbar.scss";
-    // @import "page.scss";
-    // @import "scrollbar.scss";
-    // @import "button.scss";
-    // @import "icon.scss";
-    // @import "print.scss";
 }
